@@ -1,0 +1,14 @@
+{
+  "claude-code/hooks/memory-session-length.sh": {
+    "mtime": 1789473342.0,
+    "seen": 1789476941.2213304,
+    "ast_hash": "9177e7d856214635db8133ebf8930d2d",
+    "semantic_hash": "9177e7d856214635db8133ebf8930d2d"
+  },
+  "claude-code/hooks/memory-session-start.sh": {
+    "mtime": 1789473333.0,
+    "seen": 1789476941.2213418,
+    "ast_hash": "4b72b43a7e93c457e78fd140441d8c04",
+    "semantic_hash": "4b72b43a7e93c457e78fd140441d8c04"
+  }
+}

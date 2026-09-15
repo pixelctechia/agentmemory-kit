@@ -1,0 +1,16 @@
+{
+  "_comment": "Antigravity's hook schema is newer and less publicly documented than Claude Code's, and can change between versions. Before using this file, ask your Antigravity agent to verify this structure against its own current hooks documentation and adjust event names/paths if needed — do not assume this is exact for your installed version.",
+  "hooks": {
+    "memory-session-start": {
+      "event": "PreInvocation",
+      "condition": "invocationNum == 1",
+      "command": "~/.gemini/config/hooks/memory-session-start.py",
+      "description": "Records session start time and reports memory/graph freshness for the current workspace. Fires once per session."
+    },
+    "memory-session-duration": {
+      "event": "PreInvocation",
+      "command": "~/.gemini/config/hooks/memory-session-duration.py",
+      "description": "Checks elapsed session time before every model turn; injects a 2-hour warning suggesting a lightweight checkpoint when due."
+    }
+  }
+}
