@@ -6,6 +6,23 @@
 
 ---
 
+## How it works, in plain terms
+
+New to AI coding agents? Here's the short version: AI models like Claude or Gemini don't remember anything once you close the chat. Ask an agent to build a feature today, come back tomorrow, and it has no idea what happened — not what you decided, not what's finished, not what's still broken.
+
+AgentMemory Kit fixes that. It gives your project a memory folder the agent reads every time it opens, plus a set of guardrails so it never surprises you by changing something you didn't ask about.
+
+```mermaid
+flowchart LR
+    A["🗂️ You open the project"] --> B["🔎 The agent checks memory<br/>(automatic, free)"]
+    B --> C["💬 You ask for a change"]
+    C --> D["🛡️ The agent only touches<br/>what you asked for"]
+    D --> E["💾 On close, memory<br/>gets updated"]
+    E -->|Next session| A
+```
+
+The rest of this README goes deeper into how each piece works — read on if you want the details, or jump straight to [Quick start](#quick-start) if you just want to try it.
+
 ## Why this exists
 
 AI coding agents forget everything between sessions. AgentMemory Kit gives any project a persistent, versioned, human-readable memory — plus a global orchestrator (hooks + subagent) that automatically checks session health, session length, and task scope, so the agent never starts a session blind and never silently overreaches.

@@ -8,6 +8,23 @@
 
 ---
 
+## Como funciona, em termos simples
+
+Novo no mundo dos agentes de IA? Aqui vai o resumo: modelos de IA como Claude ou Gemini não lembram de nada depois que você fecha o chat. Se você pedir pra um agente construir algo hoje, e voltar amanhã, ele não tem ideia do que aconteceu — não sabe o que foi decidido, o que já está pronto, o que ainda está quebrado.
+
+O AgentMemory Kit resolve isso. Ele dá ao seu projeto uma pasta de memória que o agente lê toda vez que abre, mais um conjunto de proteções para que ele nunca te surpreenda mudando algo que você não pediu.
+
+```mermaid
+flowchart LR
+    A["🗂️ Você abre o projeto"] --> B["🔎 O agente checa a memória<br/>(automático, sem custo)"]
+    B --> C["💬 Você pede uma mudança"]
+    C --> D["🛡️ O agente só mexe no<br/>que você pediu"]
+    D --> E["💾 Ao fechar, a memória<br/>é atualizada"]
+    E -->|Próxima sessão| A
+```
+
+O restante deste manual entra em detalhe sobre cada parte — continue lendo se quiser entender a fundo, ou vá direto para [Início rápido](#início-rápido) se quiser só testar.
+
 ## Por que isso existe
 
 Agentes de IA esquecem tudo entre sessões. O AgentMemory Kit dá a qualquer projeto uma memória persistente, versionada e legível por humanos — mais um orquestrador global (hooks + subagente) que checa automaticamente a saúde da sessão, o tempo de trabalho e o escopo da tarefa, para que o agente nunca comece "no escuro" e nunca ultrapasse o que foi pedido sem avisar.
