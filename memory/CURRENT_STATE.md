@@ -2,7 +2,7 @@
 name: CURRENT_STATE
 description: Snapshot of the project's current state. Read first, every session. Max ~150 lines.
 Last updated: 2026-09-20
-Updated by: session 2026-09-20
+Updated by: session 2026-09-20 (pt-BR tutorials)
 Status: current
 ---
 
@@ -20,6 +20,7 @@ AgentMemory Kit is an open-source standard and operational framework providing p
   - Confirmed Codex's native 3-level `AGENTS.md` merge (`~/.codex/AGENTS.md` → repo-root → cwd) via official docs.
   - **Real end-to-end test result: the Codex hooks do NOT fire.** Fresh session, project marked `trust_level = "trusted"`, both hooks permanently registered in `~/.codex/config.toml` — `~/.codex/memory-orchestrator/sessions/` stayed empty after the session. `AGENTS.md`/memory reading worked correctly (confirmed independently of the hooks). Suspected cause: a separate `HookTrustStatus`/`HookExecutionMode` wire type found in the binary, distinct from project trust — its approval flow (if any) lives in TUI onboarding code (`trust_directory.rs`) but did not surface during manual interactive testing either. Documented as a known, unresolved limitation in `codex/INSTALL.md` — hooks section retitled "built but not confirmed working," with manual-workaround guidance (run Prompt 7 manually, self-monitor session length) and an open call for outside investigation.
   - Bumped version to **v2.5** in `CHANGELOG.md`; updated `README.md`, `docs/README.pt-BR.md`, and `docs/MANUAL.md` to reference Codex CLI alongside Claude Code and Antigravity.
+  - Added Brazilian Portuguese translations of all three tool installation tutorials: `claude-code/INSTALL.pt-BR.md`, `antigravity/INSTALL.pt-BR.md`, `codex/INSTALL.pt-BR.md`. Each original English `INSTALL.md` now links to its Portuguese counterpart and vice versa. Commands, paths, and code blocks kept untranslated; the Codex limitation section (hooks confirmed not firing, suspected `HookTrustStatus`/`HookExecutionMode` cause, open call for investigation) was translated preserving the exact same confident/honest framing as the English original.
 - **2026-09-15**:
   - Bootstrapped canonical memory via **Path A** (Caminho A) with all 18 numbered memory files (`00_` to `17_`).
   - Adapted `02_DATABASE.md` (templates as data schemas) and `03_FRONTEND.md` (prompts as UI catalog).

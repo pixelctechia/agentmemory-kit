@@ -1,3 +1,5 @@
+🇧🇷 [Leia em Português](INSTALL.pt-BR.md)
+
 # Installing the AgentMemory Kit orchestrator for Antigravity
 
 This is a **one-time, per-machine** installation.

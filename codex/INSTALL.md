@@ -1,3 +1,5 @@
+🇧🇷 [Leia em Português](INSTALL.pt-BR.md)
+
 # Installing the AgentMemory Kit orchestrator for OpenAI Codex CLI
 
 > **Status summary:** `AGENTS.md` / memory / the 6 mandatory rules — **confirmed

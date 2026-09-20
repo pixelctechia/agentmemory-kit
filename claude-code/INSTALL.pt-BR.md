@@ -1,11 +1,11 @@
-🇧🇷 [Leia em Português](INSTALL.pt-BR.md)
+🇺🇸 [Read in English](INSTALL.md)
 
-# Installing the AgentMemory Kit orchestrator for Claude Code
+# Instalando o orquestrador do AgentMemory Kit para o Claude Code
 
-This is a **one-time, per-machine** installation — not per project, not
-per account.
+Esta é uma instalação **única, por máquina** — não por projeto, não
+por conta.
 
-## 1. Copy the files
+## 1. Copiar os arquivos
 
 ```bash
 mkdir -p ~/.claude/agents ~/.claude/hooks
@@ -15,16 +15,16 @@ cp claude-code/hooks/memory-session-length.sh ~/.claude/hooks/
 chmod +x ~/.claude/hooks/memory-session-start.sh ~/.claude/hooks/memory-session-length.sh
 ```
 
-## 2. Register the hooks
+## 2. Registrar os hooks
 
-Back up your existing `~/.claude/settings.json` first:
+Faça backup do seu `~/.claude/settings.json` existente primeiro:
 
 ```bash
 cp ~/.claude/settings.json ~/.claude/settings.json.bak-$(date +%Y%m%d-%H%M%S) 2>/dev/null || true
 ```
 
-Add these two entries under the `"hooks"` key (merge with any existing
-hooks you already have — do not replace the whole file):
+Adicione estas duas entradas sob a chave `"hooks"` (faça o merge com
+quaisquer hooks que você já tenha — não substitua o arquivo inteiro):
 
 ```json
 {
@@ -53,30 +53,31 @@ hooks you already have — do not replace the whole file):
 }
 ```
 
-Validate the JSON before restarting:
+Valide o JSON antes de reiniciar:
 
 ```bash
 jq -e . ~/.claude/settings.json > /dev/null && echo "OK"
 ```
 
-## 3. Restart the session
+## 3. Reiniciar a sessão
 
-Hooks and the custom subagent list are only loaded at process start.
-Close Claude Code completely and reopen it (or `/exit` then `claude`
-again) — editing these files mid-session has no effect until restart.
+Hooks e a lista de subagentes customizados só são carregados na
+inicialização do processo. Feche o Claude Code completamente e reabra
+(ou `/exit` e depois `claude` de novo) — editar esses arquivos no meio
+da sessão não tem efeito até o reinício.
 
-## 4. Verify
+## 4. Verificar
 
-Open any project and confirm the first response mentions the project's
-memory status (or stays silent if everything's already fine). To test
-without waiting:
+Abra qualquer projeto e confirme que a primeira resposta menciona o
+status de memória do projeto (ou fica em silêncio se já estiver tudo
+certo). Para testar sem esperar:
 
 ```bash
 echo '{"session_id":"probe","cwd":"/path/to/some/project"}' | ~/.claude/hooks/memory-session-start.sh
 ```
 
-To test the 2-hour warning without waiting 2 hours, prefix the second
-script with a shorter window:
+Para testar o aviso de 2 horas sem esperar 2 horas, prefixe o segundo
+script com uma janela mais curta:
 
 ```bash
 MEMORY_SESSION_WARN_SECONDS=5 echo '{"session_id":"probe"}' | ~/.claude/hooks/memory-session-length.sh

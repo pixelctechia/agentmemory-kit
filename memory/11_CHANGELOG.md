@@ -2,11 +2,16 @@
 name: 11_CHANGELOG
 description: Chronological record of major releases, updates, and memory bootstraps.
 Last updated: 2026-09-20
-Updated by: session 2026-09-20
+Updated by: session 2026-09-20 (pt-BR tutorials)
 Status: current
 ---
 
 # 11 — Changelog
+
+## 2026-09-20 — Portuguese install tutorials
+- Added `claude-code/INSTALL.pt-BR.md`, `antigravity/INSTALL.pt-BR.md`, `codex/INSTALL.pt-BR.md` — full Brazilian Portuguese translations of the three tool installation tutorials. Commands, paths, and code blocks left untranslated; only explanatory text, headings, and instructions translated.
+- Added cross-language pointers: each English `INSTALL.md` links to its `INSTALL.pt-BR.md` counterpart at the top, and each Portuguese file links back to the English original.
+- The Codex translation preserves the exact confidence framing of the English version: AGENTS.md support stated as fully confirmed with no caveats; the hooks section keeps the same unhedged admission that they do not fire automatically, the same suspected cause (`HookTrustStatus`/`HookExecutionMode`), and the same open invitation for community investigation.
 
 ## 2026-09-20 — Codex CLI support (v2.5)
 - Added `codex/` folder: `hooks/memory-session-start.sh`, `hooks/memory-session-length.sh`, `agents/memory-orchestrator.toml` (official Codex subagent TOML schema — `name`, `description`, `developer_instructions` required), `config-snippet.toml`, `INSTALL.md`.
