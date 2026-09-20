@@ -167,6 +167,24 @@ outside any single project's repository:
     injecting a short summary as context. Zero LLM cost — plain shell.
   - `UserPromptSubmit` — checks elapsed session time before every prompt;
     injects the 2-hour warning described in section 4.4 when due.
+- **OpenAI Codex CLI**: Codex has native, confirmed support for `AGENTS.md`
+  (a 3-level merge: `~/.codex/AGENTS.md` global → repo-root → cwd,
+  concatenated with files closer to cwd taking precedence, capped at
+  `project_doc_max_bytes`), so no extra bootstrap file is needed there. The
+  orchestrator itself is `~/.codex/agents/memory-orchestrator.toml`, using
+  Codex's own official subagent schema (`name`, `description`,
+  `developer_instructions` required; `model`, `model_reasoning_effort`,
+  `sandbox_mode`, `mcp_servers`, `skills.config` optional) — unlike Claude
+  Code's subagent, Codex never auto-spawns it; it must be delegated to
+  explicitly in a prompt. The same two lifecycle hooks (`SessionStart`,
+  `UserPromptSubmit`) are registered via `~/.codex/config.toml` (inline
+  `[hooks]` table or an equivalent `hooks.json`). Their JSON I/O contract
+  was confirmed — via official docs and native-binary string inspection —
+  to be field-for-field identical to Claude Code's hook contract
+  (`session_id`, `cwd`, `hookSpecificOutput`, `additionalContext`, etc.),
+  even though the two products are unrelated; whether that's intentional
+  compatibility or coincidence was not confirmed. Full install steps and
+  confidence notes: [`codex/INSTALL.md`](../codex/INSTALL.md).
 - **Antigravity**: the equivalent custom agent at
   `~/.gemini/config/agents/memory-orchestrator/agent.md`, plus lifecycle
   hooks in Antigravity's own hook configuration format.

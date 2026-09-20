@@ -1,6 +1,6 @@
 # AgentMemory Kit — Manual em Português (Brasil)
 
-**Memória persistente e estruturada, mais autochecagem de comportamento, para agentes de IA que programam — funciona com Claude Code, Antigravity (Gemini), e qualquer ferramenta compatível com `AGENTS.md`.**
+**Memória persistente e estruturada, mais autochecagem de comportamento, para agentes de IA que programam — funciona com Claude Code, OpenAI Codex CLI, Antigravity (Gemini), e qualquer ferramenta compatível com `AGENTS.md`.**
 
 🇺🇸 [Read in English](../README.md)
 
@@ -51,6 +51,7 @@ Documentadas em `memory/12_AI_CONTEXT_RULES.md`:
 Instalado uma vez por máquina (não por projeto):
 
 - **Claude Code**: um subagente customizado (`~/.claude/agents/memory-orchestrator.md`) + dois hooks leves, com custo zero de token (`SessionStart`, `UserPromptSubmit`), que checam a saúde da memória do projeto e o tempo de sessão automaticamente.
+- **OpenAI Codex CLI**: o agente customizado equivalente no formato oficial TOML do Codex (`~/.codex/agents/memory-orchestrator.toml`) + os mesmos dois hooks de ciclo de vida, registrados via `~/.codex/config.toml`.
 - **Antigravity**: o agente customizado equivalente + hooks de ciclo de vida, no formato de configuração próprio do Antigravity.
 
 ### 5. Catálogo completo de prompts
@@ -74,6 +75,7 @@ Escolha o caminho certo:
 ### 2. Instalar o orquestrador global (uma vez por máquina)
 
 - Claude Code: `claude-code/INSTALL.md`
+- Codex CLI: `codex/INSTALL.md`
 - Antigravity: `antigravity/INSTALL.md`
 
 ### 3. Rotina diária
@@ -94,7 +96,7 @@ Manual técnico completo (em inglês): `docs/MANUAL.md`
 - **O agente nunca instala, apaga ou sobrescreve sem ser pedido.** Detectar e reportar vêm primeiro; qualquer ação exige sua confirmação.
 - **Automação com custo zero de token sempre que possível.** As checagens de saúde de memória e de duração de sessão rodam como scripts simples — sem raciocínio de IA, sem custo, todas as vezes.
 - **Portátil por design.** Tudo vive no próprio repositório do projeto (`memory/`, `AGENTS.md`), exceto o orquestrador global, que é instalado uma vez por máquina, não por conta.
-- **Agnóstico de ferramenta.** Os mesmos arquivos de memória são lidos corretamente pelo Claude Code e pelo Antigravity — e por qualquer outra ferramenta que leia `AGENTS.md`.
+- **Agnóstico de ferramenta.** Os mesmos arquivos de memória são lidos corretamente pelo Claude Code, pelo OpenAI Codex CLI e pelo Antigravity — e por qualquer outra ferramenta que leia `AGENTS.md`.
 
 ## Licença
 

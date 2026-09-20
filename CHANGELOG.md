@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.5
+- Added OpenAI Codex CLI support (`codex/` folder): confirmed native AGENTS.md support (3-level merge), confirmed native session lifecycle hooks (SessionStart, UserPromptSubmit) with a Claude Code-identical I/O contract, and the official TOML custom-agent format for a Codex version of memory-orchestrator.
+
 ## v2.4
 - Added rule 6: **Scope Discipline (Domain Isolation)** — the agent
   classifies every request by domain (design/UI, backend, database,

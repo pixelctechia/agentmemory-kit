@@ -1,6 +1,6 @@
 # AgentMemory Kit
 
-**Persistent, structured memory and self-checking behavior for AI coding agents — works across Claude Code, Antigravity (Gemini), and any AGENTS.md-compatible tool.**
+**Persistent, structured memory and self-checking behavior for AI coding agents — works across Claude Code, OpenAI Codex CLI, Antigravity (Gemini), and any AGENTS.md-compatible tool.**
 
 🇧🇷 [Leia em Português](docs/README.pt-BR.md)
 
@@ -40,6 +40,7 @@ AI coding agents forget everything between sessions. AgentMemory Kit gives any p
   6. **Scope Discipline (Domain Isolation)** — the agent classifies every request by domain (design/UI, backend, database, infrastructure, content) and never touches a domain you didn't ask about without stopping to ask first.
 - **A global orchestrator**, installable once per machine:
   - **Claude Code**: a custom subagent (`~/.claude/agents/memory-orchestrator.md`) + two lightweight, zero-token shell hooks (`SessionStart`, `UserPromptSubmit`) that check project memory health and session length automatically.
+  - **OpenAI Codex CLI**: the equivalent custom agent in Codex's official TOML format (`~/.codex/agents/memory-orchestrator.toml`) + the same two lifecycle hooks, registered via `~/.codex/config.toml`.
   - **Antigravity**: the equivalent custom agent + lifecycle hooks, using Antigravity's own configuration format.
 - **A full prompt catalog** for every stage of a project's life: bootstrapping from nothing, migrating an old single-file memory dump, auditing an existing setup, running a major task safely, closing a session, and periodic maintenance.
 - **Optional [Graphify](https://github.com/) integration** — a code knowledge graph the agent queries before falling back to grep, keeping token usage down on large codebases.
@@ -59,6 +60,7 @@ Pick the path that matches your project:
 ### 2. Install the global orchestrator (once per machine)
 
 - Claude Code: [`claude-code/INSTALL.md`](claude-code/INSTALL.md)
+- Codex CLI: [`codex/INSTALL.md`](codex/INSTALL.md)
 - Antigravity: [`antigravity/INSTALL.md`](antigravity/INSTALL.md)
 
 ### 3. Daily routine
@@ -79,7 +81,7 @@ Full technical manual: [`docs/MANUAL.md`](docs/MANUAL.md)
 - **The agent never installs, deletes, or overwrites without being asked.** Detection and reporting come first; action requires your confirmation.
 - **Zero-token automation where possible.** Session-health and session-length checks run as plain shell scripts — no LLM reasoning, no cost, every single time.
 - **Portable by design.** Everything lives in the project's own repository (`memory/`, `AGENTS.md`) except the one-time global orchestrator install, which lives per-machine, not per-account.
-- **Tool-agnostic.** The same memory files are read correctly by Claude Code and Antigravity — and by any other tool that reads `AGENTS.md`.
+- **Tool-agnostic.** The same memory files are read correctly by Claude Code, OpenAI Codex CLI, and Antigravity — and by any other tool that reads `AGENTS.md`.
 
 ## License
 

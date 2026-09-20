@@ -1,0 +1,34 @@
+# AgentMemory Kit — Codex CLI hook registration snippet
+#
+# Confirmed: the "hooks" feature is stable = true by default in this Codex
+# version (checked via `codex features list` on this machine, v0.130.0 —
+# "hooks   stable   true"). No need to pass --enable hooks or set
+# features.hooks = true manually.
+#
+# Codex supports two equivalent ways to register hooks: a standalone
+# hooks.json file, or an inline [hooks] table directly in config.toml
+# (learn.chatgpt.com/docs/hooks). This snippet uses the inline table so
+# everything lives in one file — merge this into your existing
+# ~/.codex/config.toml, do not overwrite the whole file.
+
+[hooks.session_start]
+command = ["/home/YOUR_USER/.codex/hooks/memory-session-start.sh"]
+
+[hooks.user_prompt_submit]
+command = ["/home/YOUR_USER/.codex/hooks/memory-session-length.sh"]
+
+# If you prefer a separate hooks.json instead of the inline table above,
+# the equivalent file (~/.codex/hooks.json) is:
+#
+# {
+#   "session_start": {
+#     "command": ["/home/YOUR_USER/.codex/hooks/memory-session-start.sh"]
+#   },
+#   "user_prompt_submit": {
+#     "command": ["/home/YOUR_USER/.codex/hooks/memory-session-length.sh"]
+#   }
+# }
+#
+# Use ONE of the two forms (inline table OR hooks.json), not both, to
+# avoid duplicate registration. Replace YOUR_USER with your actual home
+# directory path — Codex does not expand "~" inside array values here.
